@@ -1,14 +1,23 @@
 # ONLYOFFICE module package for Alfresco
 
-This plugin enables users to edit office documents from Alfresco Share using ONLYOFFICE Docs packaged as Document Server - [Community or Enterprise Edition](#onlyoffice-docs-editions).
+This plugin enables users to create, edit, and collaborate on office documents directly within Alfresco Share using [ONLYOFFICE Docs](https://www.onlyoffice.com/docs).
 
-## Features
+<p align="center">
+  <a href="https://www.onlyoffice.com/office-for-alfresco">
+    <img width="800" src="https://static-site.onlyoffice.com/public/images/templates/office-for-alfresco/hero/hero@2x.png" alt="ONLYOFFICE for Alfresco">
+  </a>
+</p>
 
-* Create and edit text documents, spreadsheets, and presentations.
-* Share documents with other users.
-* Co-edit documents in real-time: use two co-editing modes (Fast and Strict), Track Changes, comments, and built-in chat.
+## Features ✨
 
-## Supported formats
+- Create and edit **text documents, spreadsheets, presentations,** and **PDFs** directly in Alfresco Share.
+- Share documents securely with other Alfresco users.
+- Collaborate in **real time** using:
+  - Two co-editing modes (**Fast** and **Strict**)
+  - **Track Changes** and version history
+  - **Comments** and built-in chat 💬
+
+### Supported formats 🗂️
 
 **For viewing:**
 * **WORD**: DOC, DOCM, DOCX, DOT, DOTM, DOTX, EPUB, FB2, FODT, HTM, HTML, HWP, HWPX, MD, MHT, MHTML, ODT, OTT, PAGES, RTF, STW, SXW, TXT, WPS, WPT, XML
@@ -37,21 +46,26 @@ This plugin enables users to edit office documents from Alfresco Share using ONL
 * **SLIDE**: DPS, DPT, FODP, KEY, ODG, ODP, OTP, POT, POTM, POTX, PPS, PPSM, PPSX, PPT, PPTM, PPTX, SXI
 * **PDF**: DOCXF, OXPS, PDF, XPS
 
-To convert a specific file, select `Convert using ONLYOFFICE` action. Resulting file will be placed in the same folder. You can also configure rules for a folder, that will automatically convert files on upload or on change. Details [here](https://docs.alfresco.com/5.1/tasks/library-folder-rules-define-create.html).
+> To convert a specific file, select `Convert using ONLYOFFICE` action. Resulting file will be placed in the same folder. You can also configure rules for a folder, that will automatically convert files on upload or on change. [Check details](https://docs.alfresco.com/5.1/tasks/library-folder-rules-define-create.html)
 
 ## Installing ONLYOFFICE Docs
 
-You will need an instance of ONLYOFFICE Docs (Document Server) that is resolvable and connectable both from Alfresco and any end clients. ONLYOFFICE Document Server must also be able to POST to Alfresco directly.
+ONLYOFFICE Docs (Document Server) must be accessible from both Alfresco and client browsers, and must be capable of sending POST requests to Alfresco.
 
-You can install free Community version of ONLYOFFICE Docs or scalable Enterprise Edition with pro features.
+You can choose between two deployment options:
 
-To install free Community version, use [Docker](https://github.com/onlyoffice/Docker-DocumentServer) (recommended) or follow [these instructions](https://helpcenter.onlyoffice.com/installation/docs-community-install-ubuntu.aspx) for Debian, Ubuntu, or derivatives.  
+### 🖥️ Self-hosted version
 
-To install Enterprise Edition, follow instructions [here](https://helpcenter.onlyoffice.com/installation/docs-enterprise-index.aspx).
+- **Community Edition** (free): [Docker installation guide](https://github.com/onlyoffice/Docker-DocumentServer) or [manual installation](https://helpcenter.onlyoffice.com/installation/docs-community-install-ubuntu.aspx)
+- **Enterprise Edition**: [Installation guide](https://helpcenter.onlyoffice.com/docs/installation/enterprise)
 
 Community Edition vs Enterprise Edition comparison can be found [here](#onlyoffice-docs-editions).
 
-## Installing ONLYOFFICE module package for Alfresco
+### ☁️ ONLYOFFICE Docs Cloud
+
+If you prefer not to host or maintain your own server, try ONLYOFFICE Docs Cloud — no download or setup required. [Get started here](https://www.onlyoffice.com/docs-registration)
+
+## Installing ONLYOFFICE module package for Alfresco 📥
 
 To start using ONLYOFFICE Document Server with Alfresco, the following steps must be performed for Ubuntu 14.04:
 
@@ -77,7 +91,8 @@ The latest compiled package files are available [here](https://github.com/onlyof
 
 3. Make sure that Document Server will be able to POST to Alfresco.
 
-    You may need to change these lines in `alfresco-global.properties` or you can set it using [configuration page](#configuration)
+    You may need to change these lines in `alfresco-global.properties` or you can set it using [configuration page](#configuration).
+
     ```
     alfresco.host=<hostname>
     alfresco.port=443
@@ -103,8 +118,9 @@ Module configuration can be found inside `Alfresco Administration Console` or by
 
 > You can also add `onlyoffice.url` in `alfresco-global.properties`. Configuration made via settings page will override `alfresco-global.properties`.
 
-Starting from version 7.2, JWT is enabled by default and the secret key is generated automatically to restrict the access to ONLYOFFICE Docs and for security reasons and data integrity. 
-Specify your own **Secret key** on the Alfresco configuration page or by adding *onlyoffice.security.key* to `alfresco-global.properties`. In the ONLYOFFICE Docs [config file](https://api.onlyoffice.com/docs/docs-api/additional-api/signature/, specify the same secret key and enable the validation.
+Configuration settings include JWT, enabled by default to protect the editors from unauthorized access. If setting a custom **Secret key**, ensure it matches the one in the ONLYOFFICE Docs [config file](https://api.onlyoffice.com/docs/docs-api/additional-api/signature/) for proper validation.
+
+> You can set the secret key by adding *onlyoffice.security.key* to `alfresco-global.properties`.
 
 ## Compiling ONLYOFFICE module package for Alfresco
 
@@ -117,7 +133,7 @@ If you plan to compile the ONLYOFFICE module package for Alfresco yourself (e.g.
     ```
 
 2. Install latest Maven:
-Installation process is described [here](https://maven.apache.org/install.html)
+Installation process is described [here](https://maven.apache.org/install.html).
 
 3. Download the ONLYOFFICE module package for Alfresco source code:
     ```bash
@@ -143,7 +159,7 @@ Use this command from project directory:
 docker-compose up
 ```
 
-## How it works
+## How it works 🛠️
 
 The ONLYOFFICE integration follows the API documented [here](https://api.onlyoffice.com/docs/docs-api/get-started/basic-concepts/):
 
@@ -168,32 +184,32 @@ The ONLYOFFICE integration follows the API documented [here](https://api.onlyoff
 
 ONLYOFFICE offers different versions of its online document editors that can be deployed on your own servers.
 
-* Community Edition (onlyoffice-documentserver package)
-* Enterprise Edition (onlyoffice-documentserver-ee package)
+* Community Edition 🆓 (`onlyoffice-documentserver` package)
+* Enterprise Edition 🏢 (`onlyoffice-documentserver-ee` package)
 
-The table below will help you make the right choice.
+The table below will help you to make the right choice.
 
 | Pricing and licensing | Community Edition | Enterprise Edition |
 | ------------- | ------------- | ------------- |
-| | [Get it now](https://www.onlyoffice.com/download-docs.aspx?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco#docs-community)  | [Start Free Trial](https://www.onlyoffice.com/download-docs.aspx?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco#docs-enterprise)  |
-| Cost  | FREE  | [Go to the pricing page](https://www.onlyoffice.com/docs-enterprise-prices.aspx?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco)  |
+| | [Get it now](https://www.onlyoffice.com/download-community?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco#docs-community)  | [Start Free Trial](https://www.onlyoffice.com/download?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco#docs-enterprise)  |
+| Cost  | FREE  | [Go to the pricing page](https://www.onlyoffice.com/docs-enterprise-prices?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco)  |
 | Simultaneous connections | up to 20 maximum  | As in chosen pricing plan |
 | Number of users | up to 20 recommended | As in chosen pricing plan |
 | License | GNU AGPL v.3 | Proprietary |
 | **Support** | **Community Edition** | **Enterprise Edition** |
-| Documentation | [Help Center](https://helpcenter.onlyoffice.com/installation/docs-community-index.aspx) | [Help Center](https://helpcenter.onlyoffice.com/installation/docs-enterprise-index.aspx) |
-| Standard support | [GitHub](https://github.com/ONLYOFFICE/DocumentServer/issues) or paid | One year support included |
+| Documentation | [Help Center](https://helpcenter.onlyoffice.com/docs/installation/community) | [Help Center](https://helpcenter.onlyoffice.com/docs/installation/enterprise) |
+| Standard support | [GitHub](https://github.com/ONLYOFFICE/DocumentServer/issues) or paid | 1 or 3 years support included |
 | Premium support | [Contact us](mailto:sales@onlyoffice.com) | [Contact us](mailto:sales@onlyoffice.com) |
 | **Services** | **Community Edition** | **Enterprise Edition** |
 | Conversion Service                | + | + |
 | Document Builder Service          | + | + |
 | **Interface** | **Community Edition** | **Enterprise Edition** |
-| Tabbed interface                       | + | + |
-| Dark theme                             | + | + |
-| 125%, 150%, 175%, 200% scaling         | + | + |
-| White Label                            | - | - |
-| Integrated test example (node.js)      | + | + |
-| Mobile web editors                     | - | +* |
+| Tabbed interface                  | + | + |
+| Dark theme                        | + | + |
+| 125%, 150%, 175%, 200% scaling    | + | + |
+| White Label                       | - | - |
+| Integrated test example (node.js) | + | + |
+| Mobile web editors                | - | +* |
 | **Plugins & Macros** | **Community Edition** | **Enterprise Edition** |
 | Plugins                           | + | + |
 | Macros                            | + | + |
@@ -207,8 +223,8 @@ The table below will help you make the right choice.
 | **Document Editor features** | **Community Edition** | **Enterprise Edition** |
 | Font and paragraph formatting   | + | + |
 | Object insertion                | + | + |
-| Adding Content control          | + | + | 
-| Editing Content control         | + | + | 
+| Adding Content control          | + | + |
+| Editing Content control         | + | + |
 | Layout tools                    | + | + |
 | Table of contents               | + | + |
 | Navigation panel                | + | + |
@@ -220,9 +236,9 @@ The table below will help you make the right choice.
 | Functions, formulas, equations  | + | + |
 | Table templates                 | + | + |
 | Pivot tables                    | + | + |
-| Data validation	          | + | + |
+| Data validation                 | + | + |
 | Conditional formatting          | + | + |
-| Sparklines	                  | + | + |
+| Sparklines                      | + | + |
 | Sheet Views                     | + | + |
 | **Presentation Editor features** | **Community Edition** | **Enterprise Edition** |
 | Font and paragraph formatting   | + | + |
@@ -232,14 +248,24 @@ The table below will help you make the right choice.
 | Presenter mode                  | + | + |
 | Notes                           | + | + |
 | **Form creator features** | **Community Edition** | **Enterprise Edition** |
-| Adding form fields	          | + | + |
+| Adding form fields              | + | + |
 | Form preview                    | + | + |
-| Saving as PDF	                  | + | + |
-| **Working with PDF**      | **Community Edition** | **Enterprise Edition** |
-| Text annotations (highlight, underline, cross out) | + | + |
+| Saving as PDF                   | + | + |
+| **PDF Editor features**      | **Community Edition** | **Enterprise Edition** |
+| Text editing and co-editing                                | + | + |
+| Work with pages (adding, deleting, rotating)               | + | + |
+| Inserting objects (shapes, images, hyperlinks, etc.)       | + | + |
+| Text annotations (highlight, underline, cross out, stamps) | + | + |
 | Comments                        | + | + |
 | Freehand drawings               | + | + |
 | Form filling                    | + | + |
-| | [Get it now](https://www.onlyoffice.com/download-docs.aspx?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco#docs-community)  | [Start Free Trial](https://www.onlyoffice.com/download-docs.aspx?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco#docs-enterprise) |
+| | [Get it now](https://www.onlyoffice.com/download-community?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco#docs-community)  | [Start Free Trial](https://www.onlyoffice.com/download?utm_source=github&utm_medium=cpc&utm_campaign=GitHubAlfresco#docs-enterprise)  |
 
 \* If supported by DMS.
+
+## Need help? User Feedback and Support 💡
+
+* **🐞 Found a bug?** Please report it by creating an [issue](https://github.com/ONLYOFFICE/onlyoffice-alfresco/issues).
+* **❓ Have a question?** Ask our community and developers on the [ONLYOFFICE Forum](https://community.onlyoffice.com).
+* **👨‍💻 Need help for developers?** Check our [API documentation](https://api.onlyoffice.com).
+* **💡 Want to suggest a feature?** Share your ideas on our [feedback platform](https://feedback.onlyoffice.com/forums/966080-your-voice-matters).
