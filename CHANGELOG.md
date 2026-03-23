@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.3.0    
+## 8.3.0
 ## Changed
 - updated list supported formats, see [ONLYOFFICE/document-formats v3.1.0](https://github.com/ONLYOFFICE/document-formats/releases/tag/v3.1.0)
 - fixed bug link generation when the document server or product URL contains a context path [#220](https://github.com/ONLYOFFICE/onlyoffice-alfresco/issues/220)
@@ -20,7 +20,7 @@
 
 ## 8.1.0
 ## Added
-- support events in editor: onRequestReferenceData, onRequestReferenceSource, onRequestOpen 
+- support events in editor: onRequestReferenceData, onRequestReferenceSource, onRequestOpen
 
 ## Changed
 - fixed bug with setting Ignore SSL Certificate
