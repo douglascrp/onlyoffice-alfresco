@@ -124,7 +124,7 @@ Configuration settings include JWT, enabled by default to protect the editors fr
 
 ## Compiling ONLYOFFICE module package for Alfresco
 
-If you plan to compile the ONLYOFFICE module package for Alfresco yourself (e.g. edit the source code and compile it afterwards), follow these steps. 
+If you plan to compile the ONLYOFFICE module package for Alfresco yourself (e.g. edit the source code and compile it afterwards), follow these steps.
 
 1. The latest stable Oracle Java version is necessary for the successful build. If you do not have it installed, use the following commands to install Oracle Java 8:
     ```bash
