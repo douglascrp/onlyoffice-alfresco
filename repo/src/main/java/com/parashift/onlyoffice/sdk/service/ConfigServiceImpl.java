@@ -67,6 +67,8 @@ public class ConfigServiceImpl extends DefaultConfigService {
                         .build()
         );
 
+        customization.setToolbarNoTabs(null);
+
         return customization;
     }
 

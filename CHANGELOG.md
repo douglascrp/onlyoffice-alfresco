@@ -1,5 +1,9 @@
 # Change Log
 
+##
+## Changed
+- delete setting toolbarNoTabs
+
 ## 8.3.0
 ## Changed
 - updated list supported formats, see [ONLYOFFICE/document-formats v3.1.0](https://github.com/ONLYOFFICE/document-formats/releases/tag/v3.1.0)
