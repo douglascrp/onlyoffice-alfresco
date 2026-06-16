@@ -1,6 +1,9 @@
 # Change Log
 
 ##
+## Added
+- compatible with Alfresco v26.*
+
 ## Changed
 - delete setting toolbarNoTabs
 
