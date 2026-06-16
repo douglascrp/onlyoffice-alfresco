@@ -123,7 +123,7 @@
     </div>
     <div class="onlyoffice-welcome-container-links">
         <a class="onlyoffice-welcome-container-link" target="_blank" href="https://helpcenter.onlyoffice.com/integration/alfresco.aspx">${msg("onlyoffice-config.welcome.links.learn-more")} <img></a>
-        <a class="onlyoffice-welcome-container-link" target="_blank" href="https://feedback.onlyoffice.com/forums/966080-your-voice-matters?category_id=519288">${msg("onlyoffice-config.welcome.links.suggest-feature")} <img></a>
+        <a class="onlyoffice-welcome-container-link" target="_blank" href="https://community.onlyoffice.com/c/suggestions/integrations/56">${msg("onlyoffice-config.welcome.links.suggest-feature")} <img></a>
     </div>
 </div>
 
