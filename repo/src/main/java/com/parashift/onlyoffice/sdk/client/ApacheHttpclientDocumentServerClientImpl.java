@@ -67,7 +67,7 @@ public class ApacheHttpclientDocumentServerClientImpl extends AbstractDocumentSe
     private CloseableHttpClient httpClient;
     private CloseableHttpClient httpClientForSyncConvertRequest;
 
-    private String baseUrl;
+    private String baseUrl = null;
 
     private boolean isIgnoreSSLCertificate;
 
@@ -76,14 +76,14 @@ public class ApacheHttpclientDocumentServerClientImpl extends AbstractDocumentSe
     public ApacheHttpclientDocumentServerClientImpl(final DocumentServerClientSettings documentServerClientSettings) {
         super(documentServerClientSettings);
 
-        init();
+        // not safe to init() here - attribute service might not be ready yet
     }
 
     public ApacheHttpclientDocumentServerClientImpl(final SettingsManager settingsManager,
                                                     final UrlManager urlManager) {
         super(settingsManager, urlManager);
 
-        init();
+        // not safe to init() here - attribute service might not be ready yet
     }
 
     @Override
@@ -332,6 +332,10 @@ public class ApacheHttpclientDocumentServerClientImpl extends AbstractDocumentSe
     }
 
     protected boolean shouldReinit() {
+        if (baseUrl == null) {
+            return true;
+        }
+
         HttpClientProperties httpClientProperties = getHttpClientProperties();
 
         return this.isIgnoreSSLCertificate != httpClientProperties.getIgnoreSslCertificate()
