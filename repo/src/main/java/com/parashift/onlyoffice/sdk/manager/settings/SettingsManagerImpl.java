@@ -24,7 +24,13 @@ public class SettingsManagerImpl extends DefaultSettingsManager {
 
     @Override
     public String getSetting(final String name) {
-        Object value = attributeService.getAttribute(SETTINGS_PREFIX + name);
+        Object value = null;
+
+        try {
+            value = attributeService.getAttribute(SETTINGS_PREFIX + name);
+        } catch (RuntimeException e) {
+            // AttributeService may not be ready during early Spring context bootstrap
+        }
 
         if (value == null) {
             value = globalProp.get(SETTINGS_PREFIX + name);

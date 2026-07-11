@@ -75,15 +75,11 @@ public class ApacheHttpclientDocumentServerClientImpl extends AbstractDocumentSe
 
     public ApacheHttpclientDocumentServerClientImpl(final DocumentServerClientSettings documentServerClientSettings) {
         super(documentServerClientSettings);
-
-        init();
     }
 
     public ApacheHttpclientDocumentServerClientImpl(final SettingsManager settingsManager,
                                                     final UrlManager urlManager) {
         super(settingsManager, urlManager);
-
-        init();
     }
 
     @Override
@@ -332,6 +328,10 @@ public class ApacheHttpclientDocumentServerClientImpl extends AbstractDocumentSe
     }
 
     protected boolean shouldReinit() {
+        if (this.httpClient == null || this.httpClientForSyncConvertRequest == null) {
+            return true;
+        }
+
         HttpClientProperties httpClientProperties = getHttpClientProperties();
 
         return this.isIgnoreSSLCertificate != httpClientProperties.getIgnoreSslCertificate()

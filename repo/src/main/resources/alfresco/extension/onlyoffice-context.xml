@@ -34,7 +34,8 @@
     </bean>
 
     <bean id="onlyoffice-sdk-document-server-client"
-          class="com.parashift.onlyoffice.sdk.client.ApacheHttpclientDocumentServerClientImpl">
+          class="com.parashift.onlyoffice.sdk.client.ApacheHttpclientDocumentServerClientImpl"
+          lazy-init="true">
         <constructor-arg name="settingsManager" ref="onlyoffice-sdk-settings-manager"/>
         <constructor-arg name="urlManager" ref="onlyoffice-sdk-url-manager"/>
     </bean>
